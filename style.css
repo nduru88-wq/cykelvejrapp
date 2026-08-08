@@ -1,0 +1,101 @@
+:root {
+  --bg:#0c1825;
+  --panel:#13283c;
+  --panel2:#17324d;
+  --text:#f5f9fc;
+  --muted:#afc1cf;
+  --line:rgba(255,255,255,.12);
+  --good:#4bd37b;
+  --okay:#f1c84a;
+  --bad:#ff6b6b;
+  --blue:#68c7ff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+body{min-height:100vh}
+button{font:inherit}
+.app-shell{min-height:100vh;padding:24px 28px 16px;display:flex;flex-direction:column;gap:18px;background:
+radial-gradient(circle at 90% 0%,rgba(104,199,255,.12),transparent 28%),
+linear-gradient(180deg,#0e1d2b,#0a1520)}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.eyebrow,.small-label{font-size:13px;letter-spacing:.14em;color:#8fb6cf;font-weight:800}
+h1{font-size:clamp(28px,3.2vw,52px);margin:4px 0 0;line-height:1.03}
+.header-right{display:flex;align-items:center;gap:12px}
+.today{font-size:18px;color:var(--muted);text-align:right}
+.icon-btn,.close-btn{border:0;background:rgba(255,255,255,.10);color:white;border-radius:14px;width:48px;height:48px;font-size:27px;cursor:pointer}
+.summary-card{background:linear-gradient(135deg,var(--panel2),#1e405c);border:1px solid var(--line);border-radius:24px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+.summary-score{display:flex;align-items:center;gap:18px}
+.overall-text{font-size:30px;font-weight:900;margin-top:2px}
+.summary-details{max-width:52%;font-size:17px;line-height:1.35;color:#d7e6ef;text-align:right}
+.profiles{display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1}
+.profile-card{background:rgba(19,40,60,.92);border:1px solid var(--line);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:16px;min-width:0;box-shadow:0 12px 30px rgba(0,0,0,.15)}
+.profile-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.profile-name{font-size:28px;font-weight:900}
+.route{color:var(--muted);margin-top:3px;font-size:15px}
+.score-badge{min-width:72px;text-align:center;border-radius:999px;padding:9px 13px;font-size:17px;font-weight:900}
+.score-badge.good{background:rgba(75,211,123,.16);color:#79e69c}
+.score-badge.okay{background:rgba(241,200,74,.16);color:#ffe179}
+.score-badge.bad{background:rgba(255,107,107,.16);color:#ff9292}
+.score-badge.neutral{background:rgba(255,255,255,.08);color:#c7d4dc}
+.trip-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1}
+.trip{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:18px;padding:14px}
+.trip-title{font-size:15px;color:#d9e7ef;margin-bottom:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.weather-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.metric{background:rgba(255,255,255,.055);border-radius:13px;padding:10px}
+.metric .label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8fb0c5;font-weight:800}
+.metric .value{font-size:20px;font-weight:900;margin-top:2px;white-space:nowrap}
+.metric .value.good{color:#70e397}
+.metric .value.okay{color:#ffe06f}
+.metric .value.bad{color:#ff8585}
+.placeholder{color:var(--muted);display:block}
+.clothes-btn{border:0;border-radius:16px;padding:14px 16px;background:#eef7fc;color:#15314a;font-weight:900;font-size:17px;cursor:pointer}
+.clothes-btn:active{transform:scale(.99)}
+footer{display:flex;justify-content:space-between;color:#7894a8;font-size:12px;padding:0 3px}
+dialog{border:0;padding:0;background:transparent;max-width:min(720px,92vw);width:100%}
+dialog::backdrop{background:rgba(0,0,0,.68);backdrop-filter:blur(5px)}
+.dialog-card{position:relative;background:#f6fbfe;color:#15314a;border-radius:25px;padding:28px;box-shadow:0 24px 80px rgba(0,0,0,.45)}
+.close-btn{position:absolute;right:18px;top:18px;background:#dceaf2;color:#17324d}
+.dialog-card h2{font-size:31px;margin:5px 55px 8px 0}
+.clothes-weather{color:#547083;margin-bottom:18px}
+.clothes-content{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.clothing-item{background:#eaf4f9;border-radius:15px;padding:13px 15px;font-weight:750}
+.fineprint{font-size:12px;color:#6b8291;margin:18px 0 0}
+
+/* lille animation i topvurderingen */
+.weather-animation{position:relative;width:78px;height:58px;flex:0 0 78px;overflow:hidden}
+.anim-cloud{position:absolute;left:11px;top:6px;font-size:46px;filter:drop-shadow(0 4px 6px rgba(0,0,0,.18))}
+.rain-drops,.wind-lines,.snow-flakes{display:none}
+.weather-animation.rain .rain-drops{display:block}
+.weather-animation.wind .wind-lines{display:block}
+.weather-animation.snow .snow-flakes{display:block}
+.weather-animation.sun .anim-cloud{animation:sunPulse 1.8s ease-in-out infinite}
+.weather-animation.sun .anim-cloud::after{content:"☀️";position:absolute;left:10px;top:-7px;font-size:42px}
+.weather-animation.sun .anim-cloud{font-size:0}
+.rain-drops i{position:absolute;top:35px;width:3px;height:15px;background:#77d7ff;border-radius:10px;animation:rainDrop .75s linear infinite}
+.rain-drops i:nth-child(1){left:18px;animation-delay:.0s}
+.rain-drops i:nth-child(2){left:30px;animation-delay:.18s}
+.rain-drops i:nth-child(3){left:42px;animation-delay:.34s}
+.rain-drops i:nth-child(4){left:54px;animation-delay:.08s}
+.rain-drops i:nth-child(5){left:66px;animation-delay:.26s}
+.wind-lines i{position:absolute;left:3px;height:4px;background:#d8f4ff;border-radius:10px;animation:windMove 1.2s ease-in-out infinite}
+.wind-lines i:nth-child(1){top:19px;width:58px}
+.wind-lines i:nth-child(2){top:33px;width:72px;animation-delay:.22s}
+.wind-lines i:nth-child(3){top:47px;width:48px;animation-delay:.4s}
+.weather-animation.wind .anim-cloud{opacity:.55}
+.snow-flakes i{position:absolute;top:31px;font-style:normal;font-size:14px;animation:snowFall 1.8s linear infinite}
+.snow-flakes i:nth-child(1){left:19px}
+.snow-flakes i:nth-child(2){left:39px;animation-delay:.55s}
+.snow-flakes i:nth-child(3){left:59px;animation-delay:1.05s}
+@keyframes rainDrop{0%{transform:translateY(-5px);opacity:0}20%{opacity:1}100%{transform:translateY(22px);opacity:0}}
+@keyframes windMove{0%,100%{transform:translateX(-7px);opacity:.45}50%{transform:translateX(7px);opacity:1}}
+@keyframes snowFall{0%{transform:translateY(-6px) rotate(0deg);opacity:0}20%{opacity:1}100%{transform:translateY(26px) rotate(180deg);opacity:0}}
+@keyframes sunPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.10)}}
+
+@media (max-width:900px){
+  .app-shell{padding:16px}
+  .profiles{grid-template-columns:1fr}
+  .summary-details{max-width:45%}
+}
+@media (orientation:portrait){
+  .profiles{grid-template-columns:1fr}
+}

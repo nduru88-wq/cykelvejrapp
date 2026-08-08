@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#17324d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Cykelvejr">
+  <title>Cykelvejr – Nørholm</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icons/icon-192.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">CYKELVEJR · NØRHOLM</div>
+        <h1>Er det godt cykelvejr i dag?</h1>
+      </div>
+      <div class="header-right">
+        <div id="today" class="today"></div>
+        <button id="refreshBtn" class="icon-btn" aria-label="Opdater vejr">↻</button>
+      </div>
+    </header>
+
+    <section id="summary" class="summary-card loading">
+      <div class="summary-score">
+        <div id="weatherAnimation" class="weather-animation calm" aria-hidden="true">
+          <div class="anim-cloud">☁️</div>
+          <div class="rain-drops">
+            <i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="wind-lines">
+            <i></i><i></i><i></i>
+          </div>
+          <div class="snow-flakes">
+            <i>❄</i><i>❄</i><i>❄</i>
+          </div>
+        </div>
+        <div>
+          <div class="small-label">DAGENS SAMLEDE VURDERING</div>
+          <div id="overallText" class="overall-text">Henter vejret…</div>
+        </div>
+      </div>
+      <div id="summaryDetails" class="summary-details">Temperatur, vind og nedbør vurderes for jeres cykeltider.</div>
+    </section>
+
+    <section class="profiles">
+      <article class="profile-card" data-profile="peter">
+        <div class="profile-head">
+          <div>
+            <div class="profile-name">Peter</div>
+            <div class="route">Nørholm → Aalborg SV → Nørholm</div>
+          </div>
+          <div id="peterBadge" class="score-badge neutral">–</div>
+        </div>
+        <div class="trip-grid">
+          <div class="trip">
+            <div class="trip-title"><span>🌅</span> Morgen <b>07.15–08.15</b></div>
+            <div id="peterMorning" class="weather-grid placeholder">Henter…</div>
+          </div>
+          <div class="trip">
+            <div class="trip-title"><span>🏠</span> Hjem <b>13.00–16.00</b></div>
+            <div id="peterHome" class="weather-grid placeholder">Henter…</div>
+          </div>
+        </div>
+        <button class="clothes-btn" data-clothes="peter">🧥 Hvad skal jeg tage på?</button>
+      </article>
+
+      <article class="profile-card" data-profile="son">
+        <div class="profile-head">
+          <div>
+            <div class="profile-name">Charlie</div>
+            <div class="route">Nørholm → Sønderholm → Nørholm</div>
+          </div>
+          <div id="sonBadge" class="score-badge neutral">–</div>
+        </div>
+        <div class="trip-grid">
+          <div class="trip">
+            <div class="trip-title"><span>🌅</span> Morgen <b>07.15–08.15</b></div>
+            <div id="sonMorning" class="weather-grid placeholder">Henter…</div>
+          </div>
+          <div class="trip">
+            <div class="trip-title"><span>🏠</span> Hjem <b>13.00–16.00</b></div>
+            <div id="sonHome" class="weather-grid placeholder">Henter…</div>
+          </div>
+        </div>
+        <button class="clothes-btn" data-clothes="son">🧥 Hvad skal jeg tage på?</button>
+      </article>
+    </section>
+
+    <footer>
+      <span id="updated">Ikke opdateret endnu</span>
+      <span>Vejrdata: Open‑Meteo</span>
+    </footer>
+  </main>
+
+  <dialog id="clothesDialog">
+    <div class="dialog-card">
+      <button id="closeDialog" class="close-btn" aria-label="Luk">×</button>
+      <div class="small-label">PÅKLÆDNINGSFORSLAG</div>
+      <h2 id="clothesTitle">Til cykelturen</h2>
+      <div id="clothesWeather" class="clothes-weather"></div>
+      <div id="clothesContent" class="clothes-content"></div>
+      <p class="fineprint">Forslaget er vejledende. Vind, tempo og hvor let man fryser kan ændre behovet.</p>
+    </div>
+  </dialog>
+
+  <script src="./app.js"></script>
+</body>
+</html>
